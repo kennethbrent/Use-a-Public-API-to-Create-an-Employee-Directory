@@ -1,4 +1,7 @@
- $.ajax({
+///////////////////////////////////////
+///fetch random users/////////////////
+////////////////////////////////////
+$.ajax({
   url: 'https://randomuser.me/api/?results=12&inc=picture,name,email,location,nat,dob,cell&nat=us',
   dataType: 'json',
   success: function(data) {
@@ -28,9 +31,9 @@ function appendUserCards(data) {
 			);	
 	  }
 }
-//////////////////////////////
-/////////modal array//
-//////////////////////
+//////////////////////////////////////////
+/////////create student array for modal//
+////////////////////////////////////////
 const modalArray = [];
 function appendModaldata(data) {
 	for(let i = 0; i < data.results.length; i++) {
@@ -49,8 +52,9 @@ function appendModaldata(data) {
 			</div>
 `);
 }
-	////////////////////////////////////////
-	//Append modal data to array//////	
+	//////////////////////////////////////////////////
+	//Append modalArray data to modal containter//////
+	/////////////////////////////////////////////////
 	for(let i = 0; i < modalArray.length; i++) {
 	$('.modal-info-container').append(modalArray[i]);
 		$('.modalArray').hide();
@@ -177,7 +181,6 @@ function togglePrev(){
 	   		$('#modalArray11').prev().show();
 	   }
 }
-
 //////////////////////////////////////////////////
 ////Append search box////////////////////////////
 //////////////////////////////////////////////////
@@ -186,9 +189,7 @@ $('.search-container').append(`
            <input type="search" id="search-input" class="search-input" placeholder="Search...">
            <input type="submit" value="&#x1F50D;" id="serach-submit" class="search-submit">
      </form>
-
 `);
-
 //////////////////////////////////////////////////
 //////Filter students on key up//////////////////
 ////////////////////////////////////////////////
@@ -203,7 +204,8 @@ $('#search-input').keyup(function() {
 		}
 	}
 });
-
-
-
-
+//////////////////////////////////////////////////////
+///////////CSS Styles////////////////////////////////
+/////////////////////////////////////////////////
+$('body').css('background-color', '#A5CC6B');
+$('.header-text-container h1').css('color', '#806D40');
