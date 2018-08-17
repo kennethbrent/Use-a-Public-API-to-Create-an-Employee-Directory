@@ -6,8 +6,7 @@
 	  appendModaldata(data);
 	  for(let i = 0; i <= 11; i ++) {
 	showUserModal(i);
-}
-	  
+	  }
   }
 });
 //////////////////////////////////////////////
@@ -26,16 +25,12 @@ function appendUserCards(data) {
                 	<p class="card-text cap">${data.results[i].location.city} ${data.results[i].location.state}</p>
            		</div>
        		</div>`
-			);
-			
+			);	
 	  }
-
 }
-
 //////////////////////////////
 /////////modal array//
 //////////////////////
-
 const modalArray = [];
 function appendModaldata(data) {
 	for(let i = 0; i < data.results.length; i++) {
@@ -53,18 +48,13 @@ function appendModaldata(data) {
 				<p class="modal-text">${formmatedDOB}</p>
 			</div>
 `);
-					
 }
-
 	////////////////////////////////////////
-	//Append modal data to array//////
-	
+	//Append modal data to array//////	
 	for(let i = 0; i < modalArray.length; i++) {
 	$('.modal-info-container').append(modalArray[i]);
 		$('.modalArray').hide();
 	}
-
-
 }
 /////////////////////////////////////////////////////
 //Append Modal containers and buttons///////////
@@ -73,21 +63,16 @@ $('body').append(`
 	<div class='modal-container'>
 		<div class='modal'>
 			<button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-			<div class='modal-info-container'>
-			
+			<div class='modal-info-container'>		
 			</div>
 		</div>
-		
 		<div class="modal-btn-container">
            <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
            <button type="button" id="modal-next" class="modal-next btn">Next</button>
         </div>
 	</div>
-
 `);
 $('.modal-container').hide();
-//
-//$('.modal-container').hide();
 /////////////////////////////////////////////////////////////
 /////////Function to close modal//////////////////////
 //////////////////////////////////////////////
@@ -98,7 +83,6 @@ function closeModal() {
 	});
 }
 closeModal();
-
 ////////////////////////////////////////////
 ///function  to show modal on click///////
 ////////////////////////////////////////
@@ -110,21 +94,17 @@ function showUserModal (arrayIndex) {
 		$('.modal-close-btn').on('click', () => {
 			$('#modalArray' + arrayIndex).hide();
 		});
-		
 	});
 }
-
 ////////////////////////////////////////////////////
 ////Toggle users in Modal Window//////////////////
 //////////////////////////////////////////////////
 $('#modal-next').on('click', function() {
 		toggleNext();
 });
-
 $('#modal-prev').on('click', function() {
 		togglePrev();
 });
-
 function toggleNext(){
 	if($('#modalArray0').is(":visible")) {
 	   	$('#modalArray0').hide();
@@ -161,7 +141,6 @@ function toggleNext(){
 		$('#modalArray10').next().show();
 	   } 
 }
-
 function togglePrev(){
 	if($('#modalArray1').is(":visible")) {
 	   	$('#modalArray1').hide();
@@ -199,66 +178,32 @@ function togglePrev(){
 	   }
 }
 
+//////////////////////////////////////////////////
+////Append search box////////////////////////////
+//////////////////////////////////////////////////
+$('.search-container').append(`
+	 <form action="#" method="get">
+           <input type="search" id="search-input" class="search-input" placeholder="Search...">
+           <input type="submit" value="&#x1F50D;" id="serach-submit" class="search-submit">
+     </form>
 
+`);
 
+//////////////////////////////////////////////////
+//////Filter students on key up//////////////////
+////////////////////////////////////////////////
+$('#search-input').keyup(function() {
+	const searchVal = $(this).val().toLowerCase();
+	const nameH3 = document.getElementsByClassName('card-name');
+	for(let i = 0; i < nameH3.length; i++) {
+		if(nameH3[i].textContent.startsWith(searchVal)) {
+			$(nameH3[i]).parent().parent().show();
+		} else {
+			$(nameH3[i]).parent().parent().hide();
+		}
+	}
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//function appendModal(data) {
-//	 $('.card').on('click', function(){
-//	    $('body').append(
-//		 `<div class="modal-container">
-//			<div class="modal">
-//				<button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-//				<div class="modal-info-container">
-//					<img class="modal-img" src='yeyh' alt="profile picture">
-//					<h3 id="name" class="modal-name cap">name</h3>
-//					<p class="modal-text">email</p>
-//					<p class="modal-text cap">city</p>
-//					<hr>
-//					<p class="modal-text">(555) 555-5555</p>
-//					<p class="modal-text">123 Portland Ave., Portland, OR 97204</p>
-//					<p class="modal-text">Birthday: 10/21/2015</p>
-//				 </div>
-//			 </div>
-//
-//						// IMPORTANT: if you're not going for exceeds 
-//			  <div class="modal-btn-container">
-//				  <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
-//				  <button type="button" id="modal-next" class="modal-next btn">Next</button>
-//			 </div>
-//		 </div>`
-//		);
-//		 closeModul();
-//	});
-//}
-//
 
 
 
